@@ -11,25 +11,25 @@ class MenuDataImpl() : MenuDataSource {
     override fun getMenuData(): List<Menu> = listOf(
         Menu(
             name = "Ayam Bakar",
-            price = "Rp. 50.000",
+            price = 50000,
             image = R.drawable.snack,
             desc = "Ayam bakar dengan olesan madu dan daging empuk"
         ),
         Menu(
             name = "Ayam Goreng",
-            price = "Rp. 40.000",
+            price = 40000,
             image = R.drawable.snack,
             desc = "Ayam Goreng dengan tekstur renyah dan kenyal"
         ),
         Menu(
             name = "Ayam Geprek",
-            price = "Rp. 40.000",
+            price = 40000,
             image = R.drawable.snack,
             desc = "Ayam geprek dengan sambel matah yang menggugah selera"
         ),
         Menu(
             name = "Sate usus Ayam",
-            price = "Rp. 5.000",
+            price = 5000,
             image = R.drawable.snack,
             desc = "Sate usus untuk menemani makan mu tiga kali sehari, Seven days a week!!!"
         )

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -88,30 +88,51 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
-    <EditText
-        android:id="@+id/et_harga"
-        android:layout_margin="8dp"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toTopOf="@id/cv_footer"
+    <androidx.cardview.widget.CardView
+    android:id="@+id/cv_CO"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toTopOf="@id/cv_footer"
+    app:layout_constraintStart_toStartOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/et_Totalharga"
+            android:layout_margin="8dp"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/white"/>
+        <TextView
+            android:layout_margin="8dp"
+            android:id="@+id/tv_harga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Harga"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/et_Totalharga"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <Button
+            android:id="@+id/btn_pesan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Check Out"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/cv_chart"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/white"/>
-    <TextView
-        android:layout_margin="8dp"
-        android:id="@+id/tv_harga"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Harga"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/et_harga"
-        app:layout_constraintStart_toStartOf="parent"/>
-    <Button
-        android:id="@+id/btn_pesan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="Pesan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/cv_footer"/>
-</FrameLayout>
+        tools:listitem="@layout/list_cart">
+
+    </androidx.recyclerview.widget.RecyclerView>
+</androidx.constraintlayout.widget.ConstraintLayout>

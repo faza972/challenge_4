@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/orderFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".detail.OrderFragment">
 
@@ -60,6 +61,17 @@
         android:text="Dikirim"
         app:layout_constraintStart_toEndOf="@id/btn_takeAway"
         app:layout_constraintTop_toBottomOf="@id/tv_orderMethod"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_orderCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/btn_delivery"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/list_cart"
+        tools:itemCount="3">
+    </androidx.recyclerview.widget.RecyclerView>
     <TextView
         android:id="@+id/tv_paymentMethod"
         android:layout_width="match_parent"

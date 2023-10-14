@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Menu(
     val name: String,
-    val price: String,
+    val price: Int,
     val image: Int,
     val desc: String
 ) : Parcelable

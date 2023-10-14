@@ -55,7 +55,7 @@ class GridMenuHolder(private val binding: ItemMenuGridBinding) : RecyclerView.Vi
             crossfade(true)
         }
         binding.tvNameGrid.text = data.name
-        binding.tvPriceGrid.text = data.price
+        binding.tvPriceGrid.text = data.price.toString()
         // Bind other views if needed
     }
 }
@@ -66,7 +66,7 @@ class LinearMenuHolder(private val binding: ItemMenuLinearBinding) : RecyclerVie
             crossfade(true)
         }
         binding.tvMenuName.text = data.name
-        binding.tvMenuPrice.text = data.price
+        binding.tvMenuPrice.text = data.price.toString()
         // Bind other views if needed
     }
 }

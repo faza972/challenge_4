@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,14 +29,17 @@ class HomeFragment : Fragment() {
         val isGrid = true
 
         recyclerView.layoutManager = if (isGrid) GridLayoutManager(requireContext(), 2) else LinearLayoutManager(requireContext())
-        val menuAdapter = MenuAdapter(isGrid, data = List<Menu>)
+        val menuList = MenuDataImpl().getMenuData()
+        val menuAdapter = MenuAdapter(isGrid, menuList)
 
         menuAdapter.setOnItemClickListener { menu ->
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment()
-            findNavController().navigate(action)
+            val bundle = bundleOf("item" to menu)
+            findNavController().navigate(R.id.action_homeFragment_to_detailFragment, args = bundle)
+
         }
         recyclerView.adapter = menuAdapter
 
         return view
     }
+
 }

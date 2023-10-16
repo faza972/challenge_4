@@ -20,23 +20,25 @@ import com.faza.challenge_4.viewModel.DetailViewModel
 class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private lateinit var viewModel: DetailViewModel
-    private var isGrid = false
     private var menu: Menu? = null
-    private lateinit var sharedPreference: SharedPreference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
+        setUpCartViewModel()
+
+        viewModel.allPrice.observe(viewLifecycleOwner){
+            binding.pesanMkn.text = "Tambah pesanan Ke keranjang -Rp.$it"
+        }
         return binding.root
 
-//        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-//        sharedPreference = SharedPreference(this)
-//
-//        viewModel.menuCart.observe(this) { data ->
-//            binding.
-//        }
+    }
+
+    private fun setUpCartViewModel() {
+        val viewModelFactory = ViewModelFactory(requireActivity().application)
+        viewModel = ViewModelProvider(this, viewModelFactory)[DetailViewModel::class.java]
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,6 +47,8 @@ class DetailFragment : Fragment() {
         setOnClickListener()
         mViewModel()
         addToCart()
+
+
     }
 
     private fun mViewModel() {
@@ -73,24 +77,20 @@ class DetailFragment : Fragment() {
     private fun addToCart() {
         binding.pesanMkn.setOnClickListener {
             viewModel.addToCart()
-
             findNavController().navigate(R.id.action_detailFragment_to_cartFragment)
         }
     }
 
     private fun showMenuData() {
         menu = arguments?.getParcelable("menu")
-        menu?.let {
-
-                // Tampilkan detail menu di tampilan
-                binding.tvDetailName.text = menu?.name
-                binding.tvDetailPrice.text = menu?.price.toString()
-                binding.ivDetailImage.load(menu?.image) {
-                    crossfade(true)
-                }
-                binding.tvDetaildesk.text = menu?.desc
-                viewModel.initSelectItem(it)
-            }
-
+        menu?.let { validMenu ->
+            // Tampilkan detail menu di tampilan
+            binding.tvDetailName.text = validMenu.name ?: "Nama Menu Tidak Tersedia"
+            binding.tvDetailPrice.text = validMenu.price?.toString() ?: "Harga Tidak Tersedia"
+            binding.ivDetailImage.load(validMenu.image)
+            binding.tvDetaildesk.text = validMenu.desc ?: "Deskripsi Tidak Tersedia"
+            viewModel.initSelectItem(validMenu)
+        }
     }
+
 }

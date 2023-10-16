@@ -18,8 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
         val navController = navHostFragment.navController
 
         binding.bottomNavigationView.setupWithNavController(navController)
@@ -33,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
 
     private fun shotBotNav(){
         binding.bottomNavigationView.visibility = View.VISIBLE

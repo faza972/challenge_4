@@ -25,8 +25,9 @@ class CartAdapter(private val cartViewModel: CartViewModel, private val cartInc:
         holder.bind(item, viewModel = cartViewModel, cartInc)
     }
 
-    class CartViewHolder(private val binding: ListCartBinding) :
+    inner class CartViewHolder(private val binding: ListCartBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(itemCart: Cart, viewModel: CartViewModel, cartInc: Boolean) {
             // Set data itemCart ke tampilan dalam binding
             binding.tvNamaMenu.text = itemCart.foodName
@@ -42,13 +43,13 @@ class CartAdapter(private val cartViewModel: CartViewModel, private val cartInc:
             // Menangani klik pada tombol 'Kurang'
             binding.ivPlus.setOnClickListener {
                 viewModel.decrement(itemCart)
-                binding.tvCountChart.text = itemCart.quantity.toString()
+                updateQuantity(itemCart.quantity)
             }
 
             // Menangani klik pada tombol 'Tambah'
             binding.ivMin.setOnClickListener {
                 viewModel.increment(itemCart)
-                binding.tvCountChart.text = itemCart.quantity.toString()
+                updateQuantity(itemCart.quantity)
             }
 
             if (cartInc) {
@@ -57,10 +58,18 @@ class CartAdapter(private val cartViewModel: CartViewModel, private val cartInc:
                 binding.ivPlus.visibility = View.VISIBLE
                 binding.ivMin.visibility = View.VISIBLE
             } else {
-                // Sembunyikan elemen
+                // Sembunyikan elemen tambahan
+                binding.ivDelete.visibility = View.GONE
+                binding.ivPlus.visibility = View.GONE
+                binding.ivMin.visibility = View.GONE
             }
         }
+
+        private fun updateQuantity(quantity: Int) {
+            binding.tvCountChart.text = quantity.toString()
+        }
     }
+
     @SuppressLint("NotifyDataSetChanged")
     fun setData(cartItem: List<Cart>) {
         this.cartItem = cartItem

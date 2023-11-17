@@ -1,12 +1,13 @@
 package com.faza.challenge_4.data
 
 import com.faza.challenge_4.R
-import com.faza.challenge_4.menu.Menu
+import com.faza.challenge_4.model.Menu
 
 interface MenuDataSource {
 
-    fun getMenuData() : List<Menu>
+    fun getMenuData(): List<Menu>
 }
+
 class MenuDataImpl() : MenuDataSource {
     override fun getMenuData(): List<Menu> = listOf(
         Menu(

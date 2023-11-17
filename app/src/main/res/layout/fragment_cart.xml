@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".cart.CartFragment">
+    tools:context=".fragment.CartFragment">
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_chart"
         android:layout_width="match_parent"
@@ -35,58 +35,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:cardBackgroundColor="@color/white">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/_icon__home_"
-                app:layout_constraintStart_toStartOf="@id/tv_homeName"
-                app:layout_constraintEnd_toEndOf="@id/tv_homeName"
-                app:layout_constraintBottom_toTopOf="@id/tv_homeName"/>
-            <TextView
-                android:id="@+id/tv_homeName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-            <ImageView
-                android:id="@+id/iv_chart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/shopping_cart"
-                app:layout_constraintBottom_toTopOf="@id/tv_chartName"
-                app:layout_constraintStart_toStartOf="@id/tv_chartName"
-                app:layout_constraintEnd_toEndOf="@id/tv_chartName"/>
-            <TextView
-                android:id="@+id/tv_chartName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Keranjang"
-                android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@id/tv_homeName"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_profilName"/>
-            <ImageView
-                android:id="@+id/iv_profil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/test_account"
-                app:layout_constraintBottom_toTopOf="@id/tv_profilName"
-                app:layout_constraintStart_toStartOf="@id/tv_profilName"
-                app:layout_constraintEnd_toEndOf="@id/tv_profilName"/>
-            <TextView
-                android:id="@+id/tv_profilName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Profil"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
     android:id="@+id/cv_CO"
@@ -133,6 +81,5 @@
         app:layout_constraintTop_toBottomOf="@id/cv_chart"
         app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/list_cart">
-
     </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

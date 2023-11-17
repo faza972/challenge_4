@@ -6,7 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.faza.challenge_4.entity.Cart
+import com.faza.challenge_4.model.Cart
 
 @Dao
 interface CartDao {
@@ -17,10 +17,11 @@ interface CartDao {
     fun getAllCartOrder(): LiveData<List<Cart>>
 
     @Delete
-    fun deleteCart(cart: Long): Int
+    fun delete(cart: Cart)
+
+    @Query("DELETE FROM CartOrder WHERE id = :cartId")
+    fun deleteCart(cartId: Long)
 
     @Update
-    fun updateCart(cart: Cart): Int
-
-
+    fun updateCart(cart: Cart)
 }

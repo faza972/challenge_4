@@ -2,21 +2,21 @@ package com.faza.challenge_4.viewModel
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.faza.challenge_4.entity.Cart
-import com.faza.challenge_4.repository.CartRepo
+import com.faza.challenge_4.model.Cart
+import com.faza.challenge_4.repository.CartRepository
 
 
 class CartViewModel (application: Application) : ViewModel(){
-    private val repo: CartRepo = CartRepo(application)
+    private val repo: CartRepository = CartRepository(Application())
 
     val allOrder: LiveData<List<Cart>> = repo.getAllCartOrder()
 
-    fun deleteItem(idCart: Long?) {
-        if (idCart != null) {
-            repo.delete(idCart)
-        }
+    fun deleteCart(cartId: Long) {
+       repo.deleteCart(cartId)
     }
 
     private fun updateQuantity (cart: Cart) {
@@ -35,4 +35,5 @@ class CartViewModel (application: Application) : ViewModel(){
         cart.totalAll = cart.foodPrice * total
         updateQuantity(cart)
     }
+
 }
